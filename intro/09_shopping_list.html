@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>shopping list</h1>
+  <input id="item-input" type="text">
+  <button id="add-button">add</button>
+  <ul id="shopping-list">
+    <!-- <li>샴푸</li> -->
+    <!-- <li>세제</li> -->
+    
+      <script>
+      // 1. input 태그 찾기
+      const input = document.querySelector('#item-input')
+      // 2. button 태그 찾기
+      const button = document.querySelector('#add-button')
+      // 3. ul 태그 찾기
+      const ul = document.querySelector('#shopping-list')
+      
+      button.addEventListener('click', function(e){
+        // 사용자가 입력한 데이터 가져오기
+        const itemValue = input.value
+        input.value = ''
+        
+        const tag = document.createElement('li')
+        tag.innerText = itemValue
+
+        // ul 태그의 자식요소로 tag를 추가
+        ul.appendChild(tag)
+        
+        tag.addEventListener('click',e=>{
+          if (tag.style.textDecoration) {
+            tag.style.textDecoration = ''
+          } else {
+            tag.style.textDecoration = 'line-through'
+          }
+        })
+        // 삭제 버튼 생성
+        const deleteBtn= document.createElement('button')
+        deleteBtn.innerText = '삭제'
+        
+        //삭제 버튼 이벤트 추가
+        deleteBtn.addEventListener('click',function(){
+          console.log(e)
+          tag.remove()
+        })
+        //삭제 버튼을 tag의 자식요소로 추가
+        tag.appendChild(deleteBtn)
+
+      })
+
+
+
+
+
+    </script>
+    
+  </ul>
+</body>
+</html>
